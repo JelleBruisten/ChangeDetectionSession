@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  border: 2px dotted #ccc;
+  margin: 1rem;
+  padding: 0.5rem;
+}
+
+div.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.5rem;
+}
+
+td {
+  border: 1px solid;
+  padding: 4px;
+}

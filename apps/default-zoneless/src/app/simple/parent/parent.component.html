@@ -1,0 +1,8 @@
+<div>
+  <h1>Parent</h1>
+  <button (click)="triggerChangeDetection()">Trigger</button>
+  <div class="children">
+    <cd-child *ngFor="let child of childs" [name]="child.name" [children]="child.children"></cd-child>
+    <!-- <cd-child [name]="'Bob'" [children]="['Charlie', 'Carol']"></cd-child> -->
+  </div>
+</div>

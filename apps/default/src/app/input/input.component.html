@@ -1,0 +1,9 @@
+
+<h1>Input parent</h1>
+<button (click)="increaseCounter()">+</button> 
+<button (click)="decreaseCounter()">-</button> 
+<button (click)="changeUserProperties()">Change User Properties</button> 
+<button (click)="ChangeUser()">Change User</button> 
+<button (click)="triggerChangeDetection()">Trigger</button>
+<br/>
+<cd-input-child [user]="user" [counter]="counter"></cd-input-child>

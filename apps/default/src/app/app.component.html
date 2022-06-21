@@ -1,1 +1,11 @@
-<change-detection-nx-welcome></change-detection-nx-welcome>
+<mat-toolbar color="primary">
+  <div class="menu">
+    <button routerLink="/simple" mat-button>Simple</button>
+    <button routerLink="/input" mat-button>Input</button>
+    <button routerLink="/pipe" mat-button>pipe</button>
+    <button routerLink="/expression-already-changed" mat-button>Expression Already Changed</button>
+    <button routerLink="/manual" mat-button>Manual</button>
+    <span class="cds">ChangeDetectionStrategy: {{ changeDetection === changeDetectionStrategy.OnPush ? 'OnPush' : 'Default' }}</span>
+  </div>  
+</mat-toolbar>
+<router-outlet></router-outlet>

@@ -1,0 +1,7 @@
+<div>
+  <h1>Child: {{ name }} </h1>
+  <button (click)="triggerChangeDetection()">Trigger</button>
+  <div class="children">
+    <cd-grand-child [name]="child" *ngFor="let child of children"></cd-grand-child>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+:host {
+  max-width: 1000px;
+  margin: auto;
+  display: block;
+  border: 2px dotted #ccc;
+  margin: 1rem;
+  padding: 0.5rem;
+}

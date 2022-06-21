@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { changeDetection } from './change-detection';
 
 @Component({
-  selector: 'change-detection-root',
+  selector: 'cd-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  changeDetection: changeDetection
 })
 export class AppComponent {
-  title = 'default';
+  changeDetection = changeDetection;
+  changeDetectionStrategy = ChangeDetectionStrategy;
 }

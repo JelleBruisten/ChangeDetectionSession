@@ -1,0 +1,13 @@
+<button (click)="triggerChangeDetection()">Trigger</button>
+<div>
+  <table>
+    <tr *ngFor="let numberX of numbers">
+      <td *ngFor="let numberY of numbers">
+        <!-- {{ multiply(numberX, numberY) }} -->
+        <!-- {{ numberX | multiply: numberY }} -->
+        {{ numberX | transform:multiply:numberY }}
+      </td>
+    </tr>
+  </table>  
+
+</div>
