@@ -1,3 +1,4 @@
+<h1>Pipe</h1>
 <button (click)="triggerChangeDetection()">Trigger</button>
 <div>
   <table>
@@ -5,8 +6,9 @@
       <td *ngFor="let numberY of numbers">
         {{ multiply(numberX, numberY) }}
         <!-- {{ numberX | multiply: numberY }} -->
-        <!-- {{ numberX | transform: multiply:numberY }} -->
+        <!-- {{ numberX | transform:multiply:numberY }} -->
       </td>
     </tr>
   </table>
+
 </div>
