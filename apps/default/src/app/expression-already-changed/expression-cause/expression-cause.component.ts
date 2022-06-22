@@ -1,4 +1,5 @@
-import { AfterViewChecked, AfterViewInit, Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+/* eslint-disable @angular-eslint/no-conflicting-lifecycle */
+import { DoCheck, Component, EventEmitter, Input, OnChanges, Output, AfterViewChecked } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,21 +9,19 @@ import { CommonModule } from '@angular/common';
   templateUrl: './expression-cause.component.html',
   styleUrls: ['./expression-cause.component.css'],
 })
-export class ExpressionCauseComponent implements OnChanges, AfterViewChecked, AfterViewInit {
-
+export class ExpressionCauseComponent
+  implements OnChanges, DoCheck, AfterViewChecked
+{
   @Input() counter = 1;
 
   @Output() counterChanged = new EventEmitter<number>();
 
-
-  ngAfterViewInit() {
-    this.counter = 8;
-
-    console.log('Expression cause: AfterViewInit', this.counter);
+  ngDoCheck(): void {
+    console.log('Expression Child: ChangeDetection started');
   }
 
   ngAfterViewChecked(): void {
-    console.log('Expression cause: ChangeDetection');
+    console.log('Expression Child: ChangeDetection ended');
   }
 
   triggerChangeDetection() {

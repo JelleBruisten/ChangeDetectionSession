@@ -31,6 +31,11 @@ import { RouterModule } from '@angular/router';
           import('./pipe/pipe.component').then((m) => m.PipeComponent),
       },
       {
+        path: 'trackBy',
+        loadComponent: () =>
+          import('./trackby/trackby.component').then((m) => m.TrackbyComponent),
+      },
+      {
         path: 'expression-already-changed',
         loadComponent: () =>
           import(
@@ -40,9 +45,7 @@ import { RouterModule } from '@angular/router';
       {
         path: 'manual',
         loadComponent: () =>
-          import(
-            './manual/manual.component'
-          ).then((m) => m.ManualComponent),
+          import('./manual/manual.component').then((m) => m.ManualComponent),
       },
       {
         path: '**',

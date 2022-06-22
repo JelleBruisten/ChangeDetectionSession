@@ -1,10 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  AfterViewChecked,
-  ChangeDetectorRef,
-  Component,
-  ɵmarkDirty as markDirty,
-} from '@angular/core';
+import { DoCheck, Component, AfterViewChecked } from '@angular/core';
 import { changeDetection } from '../../change-detection';
 import { ChildComponent } from '../child/child.component';
 
@@ -16,9 +11,7 @@ import { ChildComponent } from '../child/child.component';
   styleUrls: ['./parent.component.css'],
   changeDetection: changeDetection,
 })
-export class ParentComponent implements AfterViewChecked {
-  constructor(private cdr: ChangeDetectorRef) {}
-
+export class ParentComponent implements DoCheck, AfterViewChecked {
   childs = [
     {
       name: 'Alice',
@@ -30,12 +23,21 @@ export class ParentComponent implements AfterViewChecked {
     },
   ];
 
+  ngDoCheck(): void {
+    console.log(
+      `%cSimple-Parent - ChangeDetection Started`,
+      'color: green'
+    );
+  }
+
   ngAfterViewChecked(): void {
-    console.log(`parent - ChangeDetection`);
-    markDirty(this);
+    console.log(
+      `%cSimple-Parent - ChangeDetection Ended`,
+      'color: red'
+    );
   }
 
   triggerChangeDetection() {
-    this.cdr.markForCheck();
+    console.log('');
   }
 }

@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component } from '@angular/core';
+import { DoCheck, Component, AfterViewChecked, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { faker } from '@faker-js/faker';
 import { User } from './user';
@@ -11,32 +11,37 @@ import { changeDetection } from '../change-detection';
   imports: [CommonModule, InputChildComponent],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.css'],
-  changeDetection: changeDetection
+  changeDetection: changeDetection,
 })
-export class InputComponent implements AfterViewChecked {
-
+export class InputComponent implements DoCheck, AfterViewChecked {
   user: User = {
     age: 30,
     name: 'John Doe',
-  }
+  };
   counter = 0;
 
+  ngDoCheck(): void {
+    console.log(`%cinput parent - ChangeDetection Started`, 'color: green');
+  }
+
   ngAfterViewChecked(): void {
-    console.log(`input - ChangeDetection`);
+    console.log(`%cinput parent - ChangeDetection Ended`, 'color: red');
   }
 
   increaseCounter() {
     this.counter++;
+    console.log('');
   }
 
   decreaseCounter() {
     this.counter--;
+    console.log('');
   }
 
   changeUserProperties() {
-    
     this.user.age = faker.datatype.number({ min: 18, max: 100 });
     this.user.name = faker.name.findName();
+    console.log('');
     console.log(`User changed: ${JSON.stringify(this.user)}`);
   }
 
@@ -44,11 +49,12 @@ export class InputComponent implements AfterViewChecked {
     this.user = {
       age: faker.datatype.number({ min: 18, max: 100 }),
       name: faker.name.findName(),
-    }
+    };
+    console.log('');
     console.log(`User changed: ${JSON.stringify(this.user)}`);
   }
 
   triggerChangeDetection() {
-    // this.cdr.detectChanges();
+    console.log('');
   }
 }

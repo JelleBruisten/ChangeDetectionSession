@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, Input } from '@angular/core';
+import { DoCheck, Component, Input, AfterViewChecked } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { User } from '../user';
 import { changeDetection } from '../../change-detection';
@@ -9,18 +9,22 @@ import { changeDetection } from '../../change-detection';
   imports: [CommonModule],
   templateUrl: './input-child.component.html',
   styleUrls: ['./input-child.component.css'],
-  changeDetection: changeDetection
+  changeDetection: changeDetection,
 })
-export class InputChildComponent implements AfterViewChecked {
-
+export class InputChildComponent implements DoCheck, AfterViewChecked {
   @Input() counter = 0;
   @Input() user: User | null = null;
 
+  ngDoCheck(): void {
+    console.log(`%cinput child - ChangeDetection Started`, 'color: green');
+  }
+
   ngAfterViewChecked(): void {
-    console.log(`input child - ChangeDetection`);
+    console.log(`%cinput child - ChangeDetection Ended`, 'color: red');
   }
 
   triggerChangeDetection() {
+    console.log('');
     // this.cdr.detectChanges();
   }
 }

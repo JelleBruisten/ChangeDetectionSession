@@ -32,6 +32,11 @@ import { ManualComponent } from './manual/manual.component';
           import('./pipe/pipe.component').then((m) => m.PipeComponent),
       },
       {
+        path: 'trackBy',
+        loadComponent: () =>
+          import('./trackby/trackby.component').then((m) => m.TrackbyComponent),
+      },
+      {
         path: 'expression-already-changed',
         loadComponent: () =>
           import(
@@ -41,9 +46,7 @@ import { ManualComponent } from './manual/manual.component';
       {
         path: 'manual',
         loadComponent: () =>
-          import(
-            './manual/manual.component'
-          ).then((m) => m.ManualComponent),
+          import('./manual/manual.component').then((m) => m.ManualComponent),
       },
       {
         path: '**',

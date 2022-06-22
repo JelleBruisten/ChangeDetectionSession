@@ -1,0 +1,4 @@
+<h1>Track By</h1>
+<button (click)="addOne()">Hire Aris</button> - <button (click)="removeOne()">Remove Someone</button> - <button (click)="shuffle()">Shuffle</button> - <button (click)="deepReferencesChanged()">Everything changed</button>
+<!-- <cd-trackby-child [item]="item" *ngFor="let item of items"></cd-trackby-child> -->
+<cd-trackby-child [item]="item" *ngFor="let item of items; trackBy: trackBy"></cd-trackby-child>

@@ -1,10 +1,11 @@
 import {
-  AfterViewChecked,
+  DoCheck,
   ChangeDetectorRef,
   Component,
   NgZone,
   OnDestroy,
   OnInit,
+  AfterViewChecked,
 } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 
@@ -14,7 +15,7 @@ import { Subscription, timer } from 'rxjs';
   templateUrl: './manual.component.html',
   styleUrls: ['./manual.component.css'],
 })
-export class ManualComponent implements OnDestroy, AfterViewChecked {
+export class ManualComponent implements OnDestroy, DoCheck, AfterViewChecked {
   counter = 0;
   subscription: Subscription | undefined;
   constructor(private cdr: ChangeDetectorRef, private zone: NgZone) {
@@ -27,11 +28,17 @@ export class ManualComponent implements OnDestroy, AfterViewChecked {
     });
   }
 
-  ngAfterViewChecked(): void {
-    console.log(`Manual - ChangeDetection`);
+  ngDoCheck(): void {
+    console.log(`%cManual - ChangeDetection Started`, 'color: green');
   }
 
-  triggerChangeDetection() {}
+  ngAfterViewChecked(): void {
+    console.log(`%cManual - ChangeDetection Ended`, 'color: red');
+  }
+
+  triggerChangeDetection() {
+    console.log('');
+  }
 
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();

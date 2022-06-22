@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, Input } from '@angular/core';
+import { DoCheck, Component, Input, AfterViewChecked } from '@angular/core';
 import { changeDetection } from '../../change-detection';
 
 @Component({
@@ -6,17 +6,26 @@ import { changeDetection } from '../../change-detection';
   selector: 'cd-grand-child',
   templateUrl: './grand-child.component.html',
   styleUrls: ['./grand-child.component.css'],
-  changeDetection: changeDetection
+  changeDetection: changeDetection,
 })
-export class GrandChildComponent implements AfterViewChecked {
-
+export class GrandChildComponent implements DoCheck, AfterViewChecked {
   @Input() name = 'default-name';
 
+  ngDoCheck(): void {
+    console.log(
+      `%cSimple-Grand-Child-${this.name} - ChangeDetection Started`,
+      'color: green'
+    );
+  }
+
   ngAfterViewChecked(): void {
-    console.log(`${this.name} - ChangeDetection`);
+    console.log(
+      `%cSimple-Grand-Child-${this.name} - ChangeDetection Ended`,
+      'color: red'
+    );
   }
 
   triggerChangeDetection() {
-    // this.cdr.detectChanges();
+    console.log('');
   }
 }
