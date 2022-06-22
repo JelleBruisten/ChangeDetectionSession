@@ -1,4 +1,9 @@
-import { AfterViewChecked, Component, ɵdetectChanges as detectChanges, ɵmarkDirty as markDirty } from '@angular/core';
+import {
+  AfterViewChecked,
+  Component,
+  ɵdetectChanges as detectChanges,
+  ɵmarkDirty as markDirty,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExpressionCauseComponent } from './expression-cause/expression-cause.component';
 
@@ -10,12 +15,11 @@ import { ExpressionCauseComponent } from './expression-cause/expression-cause.co
   styleUrls: ['./expression-already-changed.component.css'],
 })
 export class ExpressionAlreadyChangedComponent implements AfterViewChecked {
-
   counter = 1;
 
   increaseCounter() {
     this.counter++;
-    markDirty(this);
+    // markDirty(this);
   }
 
   ngAfterViewChecked(): void {

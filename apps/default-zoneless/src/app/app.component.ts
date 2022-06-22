@@ -1,11 +1,16 @@
-import { ChangeDetectionStrategy, Component, ɵdetectChanges as detectChanges, ɵmarkDirty as markDirty} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ɵdetectChanges as detectChanges,
+  ɵmarkDirty as markDirty,
+} from '@angular/core';
 import { changeDetection } from './change-detection';
 
 @Component({
   selector: 'cd-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  changeDetection: changeDetection
+  changeDetection: changeDetection,
 })
 export class AppComponent {
   changeDetection = changeDetection;
@@ -13,6 +18,6 @@ export class AppComponent {
 
   activateRoute() {
     // detectChanges(this);
-    markDirty(this);
+    // markDirty(this);
   }
 }

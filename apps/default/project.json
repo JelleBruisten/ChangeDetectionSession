@@ -1,7 +1,7 @@
 {
   "projectType": "application",
   "sourceRoot": "apps/default/src",
-  "prefix": "change-detection",
+  "prefix": "cd",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",

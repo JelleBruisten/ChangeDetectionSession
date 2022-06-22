@@ -1,37 +1,41 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewChecked, Component } from '@angular/core';
+import {
+  AfterViewChecked,
+  ChangeDetectorRef,
+  Component,
+  ɵmarkDirty as markDirty,
+} from '@angular/core';
 import { changeDetection } from '../../change-detection';
 import { ChildComponent } from '../child/child.component';
 
 @Component({
   standalone: true,
-  imports: [
-    ChildComponent,
-    CommonModule
-  ],
+  imports: [ChildComponent, CommonModule],
   selector: 'cd-parent',
   templateUrl: './parent.component.html',
   styleUrls: ['./parent.component.css'],
-  changeDetection: changeDetection
+  changeDetection: changeDetection,
 })
 export class ParentComponent implements AfterViewChecked {
+  constructor(private cdr: ChangeDetectorRef) {}
 
   childs = [
     {
       name: 'Alice',
-      children: ['Ivan', 'Judy']
+      children: ['Ivan', 'Judy'],
     },
     {
       name: 'Bob',
-      children: ['Charlie', 'Carol']
-    },    
-  ]
+      children: ['Charlie', 'Carol'],
+    },
+  ];
 
   ngAfterViewChecked(): void {
     console.log(`parent - ChangeDetection`);
+    markDirty(this);
   }
 
   triggerChangeDetection() {
-    // this.cdr.detectChanges();
+    this.cdr.markForCheck();
   }
 }

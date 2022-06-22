@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "change-detection",
+            "prefix": "cd",
             "style": "kebab-case"
           }
         ]
