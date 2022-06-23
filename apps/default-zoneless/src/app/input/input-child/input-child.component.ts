@@ -1,4 +1,4 @@
-import { DoCheck, Component, Input, AfterViewChecked } from '@angular/core';
+import { DoCheck, Component, Input, AfterViewChecked, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { User } from '../user';
 import { changeDetection } from '../../change-detection';

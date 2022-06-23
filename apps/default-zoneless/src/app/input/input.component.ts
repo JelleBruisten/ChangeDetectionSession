@@ -1,4 +1,4 @@
-import { DoCheck, Component, AfterViewChecked, OnInit, AfterViewInit } from '@angular/core';
+import { DoCheck, Component, AfterViewChecked, ɵmarkDirty as markDirty } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { faker } from '@faker-js/faker';
 import { User } from './user';
@@ -43,6 +43,7 @@ export class InputComponent implements DoCheck, AfterViewChecked {
     this.user.name = faker.name.findName();
     console.log('');
     console.log(`User changed: ${JSON.stringify(this.user)}`);
+    markDirty(this);
   }
 
   ChangeUser() {
@@ -52,6 +53,7 @@ export class InputComponent implements DoCheck, AfterViewChecked {
     };
     console.log('');
     console.log(`User changed: ${JSON.stringify(this.user)}`);
+    markDirty(this);
   }
 
   triggerChangeDetection() {

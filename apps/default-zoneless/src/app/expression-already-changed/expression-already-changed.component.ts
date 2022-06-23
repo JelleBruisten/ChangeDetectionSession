@@ -1,4 +1,4 @@
-import { DoCheck, Component, AfterViewChecked } from '@angular/core';
+import { DoCheck, Component, AfterViewChecked, ɵmarkDirty as markDirty } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExpressionCauseComponent } from './expression-cause/expression-cause.component';
 
@@ -14,6 +14,7 @@ export class ExpressionAlreadyChangedComponent implements DoCheck, AfterViewChec
 
   increaseCounter() {
     this.counter++;
+    markDirty(this);
   }
 
   ngDoCheck(): void {
@@ -26,6 +27,7 @@ export class ExpressionAlreadyChangedComponent implements DoCheck, AfterViewChec
 
   handleCounterChanged(counter: number) {
     this.counter = counter;
+    markDirty(this);
   }
 
   triggerChangeDetection() {

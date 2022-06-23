@@ -4,9 +4,9 @@
   <table>
     <tr *ngFor="let numberX of numbers">
       <td *ngFor="let numberY of numbers">
-        {{ multiply(numberX, numberY) }}
+        <!-- {{ multiply(numberX, numberY) }} -->
         <!-- {{ numberX | multiply: numberY }} -->
-        <!-- {{ numberX | transform:multiply:numberY }} -->
+        {{ numberX | transform:multiply:numberY }}
       </td>
     </tr>
   </table>

@@ -4,7 +4,7 @@ import {
   Component,
   NgZone,
   OnDestroy,
-  OnInit,
+  ɵmarkDirty as markDirty,
   AfterViewChecked,
 } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
@@ -23,6 +23,7 @@ export class ManualComponent implements OnDestroy, DoCheck, AfterViewChecked {
       this.subscription = timer(0, 1000).subscribe(() => {
         this.zone.run(() => {
           this.counter++;
+          markDirty(this);
         });
       });
     });

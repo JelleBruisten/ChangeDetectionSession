@@ -18,6 +18,6 @@ export class AppComponent {
 
   activateRoute() {
     // detectChanges(this);
-    // markDirty(this);
+    markDirty(this);
   }
 }
